@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "668692196824",
+    "project_id": "plateful-palate",
+    "storage_bucket": "plateful-palate.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668692196824:android:bc6780c36796d8238316ad",
+        "android_client_info": {
+          "package_name": "com.example.platefulpalate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJv_kJm58DsEJm0iyyGXK0mAxts8955gY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
