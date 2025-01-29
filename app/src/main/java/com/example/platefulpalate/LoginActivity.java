@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = emailEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString();
 
-            // Check if email or password is empty
+
             if (email.isEmpty()) {
                 emailEditText.setError("Email is required");
                 emailEditText.requestFocus();
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Firebase Authentication for login
+
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {

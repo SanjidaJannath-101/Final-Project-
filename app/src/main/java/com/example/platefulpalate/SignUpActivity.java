@@ -2,13 +2,11 @@ package com.example.platefulpalate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.platefulpalate.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -35,22 +33,30 @@ public class SignUpActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
             String confirmPassword = confirmPasswordEditText.getText().toString();
 
-            if (name.isEmpty() || !name.matches("[a-zA-Z ]+")) {
-                nameEditText.setError("Enter a valid name");
+            // Regex for name validation (allows alphabets and spaces only, min length 2)
+            if (name.isEmpty() || !name.matches("^[A-Za-z ]{2,}$")) {
+                nameEditText.setError("Enter a valid name (letters and spaces only, min 2 characters)");
                 return;
             }
-            if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                emailEditText.setError("Enter a valid email");
+
+            // Regex for email validation
+            if (email.isEmpty() || !email.matches("^[a-zA-Z0-9._-]+@[gmailyahoo]+\\.+[com]+")) {
+                emailEditText.setError("Enter a valid email address (e.g., example@gmail.com)");
                 return;
             }
-            if (password.isEmpty() || password.length() < 6) {
-                passwordEditText.setError("Password must be at least 6 characters");
+
+            // Regex for password validation (min 6 characters, at least one uppercase, one lowercase, one number, one special character)
+            if (password.isEmpty() || !password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{6,}$")) {
+                passwordEditText.setError("Password must be at least 6 characters, include uppercase, lowercase, number, and special character");
                 return;
             }
+
+            // Confirm password validation
             if (!password.equals(confirmPassword)) {
                 confirmPasswordEditText.setError("Passwords do not match");
                 return;
             }
+
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
@@ -67,3 +73,4 @@ public class SignUpActivity extends AppCompatActivity {
         loginRedirect.setOnClickListener(v -> startActivity(new Intent(SignUpActivity.this, LoginActivity.class)));
     }
 }
+

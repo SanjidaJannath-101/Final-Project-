@@ -17,7 +17,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Set an OnClickListener to navigate to RecipePageActivity
         exploreButton.setOnClickListener(v -> {
-            // Navigate to the Recipe Page (RecipePageActivity)
+
             Intent intent = new Intent(DashboardActivity.this, RecipePageActivity.class);
             startActivity(intent);
         });
